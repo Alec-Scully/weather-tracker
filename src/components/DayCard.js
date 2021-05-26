@@ -1,31 +1,116 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 
 class DayCard extends Component {
 
-    setDate = () => {
-        let newDate = moment(this.props.day.date.toString(), "YYYYMMDD")
-        newDate.format("MMM Do YYYY")
-        console.log(newDate)
-        return newDate
+    formatDate = () => {
+        let date = this.props.day.date.toString().split("")
+        date.splice(6, 0, '-')
+        date.splice(4, 0, '-')
+        let formatDate = new Date(date.join(""))
+        const month = formatDate.toLocaleString('default', { month: 'long' });
+        var day = formatDate.getUTCDate();
+        return (`${month} ${day}`)
     }
-    
+
+    formatWeather = (type) => {
+        switch (type) {
+            case "clear":
+                return "Clear Skies"
+
+            case "pcloudy":
+                return "Partly Cloudy"
+
+            case "mcloudy":
+                return "Mostly Cloudy"
+
+            case "cloudy":
+                return "Cloudy"
+
+            case "humid":
+                return "Humid/Foggy"
+
+            case "lightrain":
+                return "Light Rain"
+
+            case "rain":
+                return "Rain"
+
+            case "oshower":
+                return "Ocassional Showers"
+
+            case "ishower":
+                return "Isolated Showers"
+
+            case "lightsnow":
+                return "Light Snow"
+
+            case "snow":
+                return "Snow"
+
+            case "rainsnow":
+                return "Rain & Snow"
+
+            case "ts":
+                return "Thunder"
+
+            case "tsrain":
+                return "Thunderstorm"
+
+            default:
+                return "Unknown!"
+        }
+    }
+
+    formatWind = (wind) => {
+        switch (wind) {
+            case 0:
+                return "Calm"       
+            case 1:
+                return "Light Air"
+            case 2:
+                return "Light Breeze"
+            case 3:
+                return "Gentle Breeze"
+            case 4:
+                return "Moderate Breeze"
+            case 5:
+                return "Fresh Breeze"
+            case 6:
+                return "Strong Breeze"
+            case 7:
+                return "High Wind"
+            case 8:
+                return "Gale"
+            case 9:
+                return "Strong Gale"
+            case 10:
+                return "Storm"
+            case 11:
+                return "Violent Storm"
+            case 12:
+                return "Hurricane Force"
+
+        }
+    }
+
 
     render() {
-        return(
+        return (
             <div className="card">
-                <p>Date: {() => this.setDate()}</p>
-                <p>Weather: {this.props.day.weather}</p>
-                <p>Max Temp: {this.props.day.temp2m.max}</p>
-                <p>Min Temp: {this.props.day.temp2m.min}</p>
-                <p>Wind Force: {this.props.day.wind10m_max}</p>
-                {Date.parse(this.props.day.date)}
+                <p>Date: {this.formatDate()}</p>
+                {/* <p>Weather: {this.props.day.weather}</p> */}
+                <p>Weather: {this.formatWeather(this.props.day.weather)}</p>
+                <p>Max Temp: {this.props.day.temp2m.max}℉</p>
+                <p>Min Temp: {this.props.day.temp2m.min}℉</p>
+                <p>Wind: {this.formatWind(this.props.day.wind10m_max)}</p>
             </div>
         )
     }
 }
 
 export default DayCard;
+
+// ℉℃
 
 // function to convert wind force into appropriate MPH or m/s
 // switch statement
