@@ -1,4 +1,35 @@
 import React, { Component } from 'react';
+import {
+    dayclear,
+    daypcloudy,
+    daymcloudy,
+    daycloudy,
+    dayhumid,
+    daylightrain,
+    dayrain,
+    dayoccshower,
+    dayishower,
+    daylightsnow,
+    daysnow,
+    dayrainsnow,
+    dayts,
+    daytsrain,
+    
+    nightclear,
+    nightpcloudy,
+    nightmcloudy,
+    nightcloudy,
+    nighthumid,
+    nightlightrain,
+    nightrain,
+    nightoccshower,
+    nightishower,
+    nightlightsnow,
+    nightsnow,
+    nightrainsnow,
+    nightts,
+    nighttsrain
+} from '../images'
 
 class DayCard extends Component {
 
@@ -16,46 +47,32 @@ class DayCard extends Component {
         switch (type) {
             case "clear":
                 return "Clear Skies"
-
             case "pcloudy":
                 return "Partly Cloudy"
-
             case "mcloudy":
                 return "Mostly Cloudy"
-
             case "cloudy":
                 return "Cloudy"
-
             case "humid":
                 return "Humid/Foggy"
-
             case "lightrain":
                 return "Light Rain"
-
             case "rain":
                 return "Rain"
-
             case "oshower":
                 return "Ocassional Showers"
-
             case "ishower":
                 return "Isolated Showers"
-
             case "lightsnow":
                 return "Light Snow"
-
             case "snow":
                 return "Snow"
-
             case "rainsnow":
                 return "Rain & Snow"
-
             case "ts":
                 return "Thunder"
-
             case "tsrain":
                 return "Thunderstorm"
-
             default:
                 return "Unknown!"
         }
@@ -89,7 +106,6 @@ class DayCard extends Component {
                 return "Violent Storm"
             case 12:
                 return "Hurricane Force"
-
         }
     }
 
@@ -103,6 +119,7 @@ class DayCard extends Component {
                 <p>Max Temp: {this.props.day.temp2m.max}℉</p>
                 <p>Min Temp: {this.props.day.temp2m.min}℉</p>
                 <p>Wind: {this.formatWind(this.props.day.wind10m_max)}</p>
+                <img src={dayrain} alt="test"/>
             </div>
         )
     }
