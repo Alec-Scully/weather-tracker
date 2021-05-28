@@ -4,10 +4,15 @@ class DayDetail extends Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="modal" 
+                style={{
+                    transform: this.props.showModal ? 'translateY(0vh)' : 'translateY(-100vh)',
+                    opacity: this.props.showModal ? '1' : '0'
+                }}
+            >
                 <div className="modal-header">
                     <p>Welcome to our site</p>
-                    <span className="close-modal-btn">x</span>
+                    <span onClick={() => this.props.handleModal()} className="close-modal-btn">x</span>
                 </div>
                 <div className="modal-content">
                     <div className="modal-body">

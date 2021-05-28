@@ -28,6 +28,9 @@ import nightrainsnow from './night/night-rainsnow.jpg'
 import nightts from './night/night-ts.jpg'
 import nighttsrain from './night/night-tsrain.jpg'
 
+import dcday from './day/day-dc.jpeg'
+import dcnight from './night/night-dc.jpeg'
+
 export {
     dayclear,
     daypcloudy,
@@ -57,5 +60,8 @@ export {
     nightsnow,
     nightrainsnow,
     nightts,
-    nighttsrain
+    nighttsrain,
+
+    dcday,
+    dcnight
 }

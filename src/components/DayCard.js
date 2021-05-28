@@ -92,7 +92,7 @@ class DayCard extends Component {
 
     render() {
         return (
-            <div onClick={() => console.log("Click!")} className="card">
+            <div onClick={() => this.props.handleModal(this.props.day)} className="card">
                 <p>{this.formatDate()}</p>
                 <img src={WeatherIcons[this.props.time + this.props.day.weather]} alt="Weather Icon" />
                 <p>{this.formatWeather(this.props.day.weather)}</p>

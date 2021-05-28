@@ -1,5 +1,9 @@
 .App {
+  height: 100%;
   text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .display {
@@ -9,6 +13,7 @@
   margin: 1rem 2rem;
   border: black solid 1px;
   box-shadow: 3px 4px  ;
+  background:#fff;
 }
 
 .card {
@@ -22,4 +27,28 @@
   box-shadow: 3px 4px;
   right: 0;
   overflow-x: hidden;
+  background: #fff;
+}
+
+.background {
+  background: rgba(60, 60, 60, 0.700);
+  height: 100%;
+  position: fixed;
+  transition: all 1.3s;
+  width: 100%;
+}
+
+.modal {
+  padding: 0.5rem;
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 1rem 1rem;
+  border: black solid 1px;
+  box-shadow: 3px 4px;
+  right: 0;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  background: #fff;
 }
