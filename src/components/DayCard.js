@@ -1,102 +1,16 @@
 import React, { Component } from 'react';
-import * as WeatherIcons from '../images'
+import * as WeatherIcons from '../images';
 
 
 class DayCard extends Component {
 
-    formatDate = () => {
-        let date = this.props.day.date.toString().split("")
-        date.splice(6, 0, '-')
-        date.splice(4, 0, '-')
-        let formatDate = new Date(date.join(""))
-        const month = formatDate.toLocaleString('default', { month: 'long' });
-        var day = formatDate.getUTCDate();
-        return (`${month} ${day}`)
-    }
-
-    formatWeather = (type) => {
-        switch (type) {
-            case "clear":
-                return "Clear Skies"
-            case "pcloudy":
-                return "Partly Cloudy"
-            case "mcloudy":
-                return "Mostly Cloudy"
-            case "cloudy":
-                return "Cloudy"
-            case "humid":
-                return "Humid/Foggy"
-            case "lightrain":
-                return "Light Rain"
-            case "rain":
-                return "Rain"
-            case "oshower":
-                return "Ocassional Showers"
-            case "ishower":
-                return "Isolated Showers"
-            case "lightsnow":
-                return "Light Snow"
-            case "snow":
-                return "Snow"
-            case "rainsnow":
-                return "Rain & Snow"
-            case "ts":
-                return "Thunder"
-            case "tsrain":
-                return "Thunderstorm"
-            default:
-                return "Unknown!"
-        }
-    }
-
-    formatWind = (wind) => {
-        switch (wind) {
-            case 0:
-                return "Calm"
-            case 1:
-                return "Light Air"
-            case 2:
-                return "Light Breeze"
-            case 3:
-                return "Gentle Breeze"
-            case 4:
-                return "Moderate Breeze"
-            case 5:
-                return "Fresh Breeze"
-            case 6:
-                return "Strong Breeze"
-            case 7:
-                return "High Wind"
-            case 8:
-                return "Gale"
-            case 9:
-                return "Strong Gale"
-            case 10:
-                return "Storm"
-            case 11:
-                return "Violent Storm"
-            case 12:
-                return "Hurricane Force"
-            default: return "No Wind"
-        }
-    }
-
-    formatTemp = () => {
-        if (this.props.degreeType === true) {
-            return `${this.props.day.temp2m.min}℉ - ${this.props.day.temp2m.max}℉`
-        } else {
-            return `${this.props.day.temp2m.min}℃ - ${this.props.day.temp2m.max}℃`
-        }
-    }
-
-
     render() {
         return (
             <div onClick={() => this.props.handleModal(this.props.day)} className="card">
-                <p>{this.formatDate()}</p>
+                <p>{this.props.formatDate(this.props.day.date)}</p>
                 <img src={WeatherIcons[this.props.time + this.props.day.weather]} alt="Weather Icon" />
-                <p>{this.formatWeather(this.props.day.weather)}</p>
-                <p>{this.formatTemp()} </p>
+                <p>{this.props.formatWeather(this.props.day.weather)}</p>
+                <p>{this.props.formatTemp(this.props.day.temp2m)} </p>
             </div>
         )
     }
