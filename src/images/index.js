@@ -5,7 +5,7 @@ import daycloudy from './day/day-cloudy.jpg'
 import dayhumid from './day/day-humid.png'
 import daylightrain from './day/day-lightrain.jpg'
 import dayrain from './day/day-rain.jpg'
-import dayoccshower from './day/day-occshower.jpg'
+import dayoshower from './day/day-oshower.jpg'
 import dayishower from './day/day-ishower.png'
 import daylightsnow from './day/day-lightsnow.jpg'
 import daysnow from './day/day-snow.jpg'
@@ -20,7 +20,7 @@ import nightcloudy from './night/night-cloudy.jpg'
 import nighthumid from './night/night-humid.png'
 import nightlightrain from './night/night-lightrain.jpg'
 import nightrain from './night/night-rain.jpg'
-import nightoccshower from './night/night-occshower.jpg'
+import nightoshower from './night/night-oshower.jpg'
 import nightishower from './night/night-ishower.png'
 import nightlightsnow from './night/night-lightsnow.jpg'
 import nightsnow from './night/night-snow.jpg'
@@ -36,7 +36,7 @@ export {
     dayhumid,
     daylightrain,
     dayrain,
-    dayoccshower,
+    dayoshower,
     dayishower,
     daylightsnow,
     daysnow,
@@ -51,7 +51,7 @@ export {
     nighthumid,
     nightlightrain,
     nightrain,
-    nightoccshower,
+    nightoshower,
     nightishower,
     nightlightsnow,
     nightsnow,

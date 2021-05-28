@@ -1,35 +1,6 @@
 import React, { Component } from 'react';
-import {
-    dayclear,
-    daypcloudy,
-    daymcloudy,
-    daycloudy,
-    dayhumid,
-    daylightrain,
-    dayrain,
-    dayoccshower,
-    dayishower,
-    daylightsnow,
-    daysnow,
-    dayrainsnow,
-    dayts,
-    daytsrain,
-    
-    nightclear,
-    nightpcloudy,
-    nightmcloudy,
-    nightcloudy,
-    nighthumid,
-    nightlightrain,
-    nightrain,
-    nightoccshower,
-    nightishower,
-    nightlightsnow,
-    nightsnow,
-    nightrainsnow,
-    nightts,
-    nighttsrain
-} from '../images'
+import * as WeatherIcons from '../images'
+
 
 class DayCard extends Component {
 
@@ -81,7 +52,7 @@ class DayCard extends Component {
     formatWind = (wind) => {
         switch (wind) {
             case 0:
-                return "Calm"       
+                return "Calm"
             case 1:
                 return "Light Air"
             case 2:
@@ -106,20 +77,26 @@ class DayCard extends Component {
                 return "Violent Storm"
             case 12:
                 return "Hurricane Force"
+            default: return "No Wind"
+        }
+    }
+
+    formatTemp = () => {
+        if (this.props.degreeType === true) {
+            return `${this.props.day.temp2m.min}℉ - ${this.props.day.temp2m.max}℉`
+        } else {
+            return `${this.props.day.temp2m.min}℃ - ${this.props.day.temp2m.max}℃`
         }
     }
 
 
     render() {
         return (
-            <div className="card">
-                <p>Date: {this.formatDate()}</p>
-                {/* <p>Weather: {this.props.day.weather}</p> */}
-                <p>Weather: {this.formatWeather(this.props.day.weather)}</p>
-                <p>Max Temp: {this.props.day.temp2m.max}℉</p>
-                <p>Min Temp: {this.props.day.temp2m.min}℉</p>
-                <p>Wind: {this.formatWind(this.props.day.wind10m_max)}</p>
-                <img src={dayrain} alt="test"/>
+            <div onClick={() => console.log("Click!")} className="card">
+                <p>{this.formatDate()}</p>
+                <img src={WeatherIcons[this.props.time + this.props.day.weather]} alt="Weather Icon" />
+                <p>{this.formatWeather(this.props.day.weather)}</p>
+                <p>{this.formatTemp()} </p>
             </div>
         )
     }
