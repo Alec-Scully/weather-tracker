@@ -30,6 +30,7 @@ import nighttsrain from './night/night-tsrain.jpg'
 
 import dcday from './day/day-dc.jpeg'
 import dcnight from './night/night-dc.jpeg'
+import loading from './loading2.gif'
 
 export {
     dayclear,
@@ -63,5 +64,6 @@ export {
     nighttsrain,
 
     dcday,
-    dcnight
+    dcnight,
+    loading
 }

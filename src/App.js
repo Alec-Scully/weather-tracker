@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from "react";
 import SevenDayDisplay from './components/SevenDayDisplay';
 import DayDetail from './components/DayDetail';
-import { dcday, dcnight } from './images'
+import { dcday, dcnight, loading} from './images'
 
 const URL_METRIC = "https://www.7timer.info/bin/civillight.php?lon=77&lat=38.9&ac=0&unit=metric&output=json&tzshift=0"
 const URL_BRITISH = "https://www.7timer.info/bin/civillight.php?lon=77&lat=38.9&ac=0&unit=british&output=json&tzshift=0"
@@ -10,6 +10,7 @@ const URL_BRITISH = "https://www.7timer.info/bin/civillight.php?lon=77&lat=38.9&
 class App extends Component {
 
   state = {
+    isLoading: true,
     british: [],
     metric: [],
     degreeType: true,
@@ -37,6 +38,13 @@ class App extends Component {
       .then(metricData => this.setState({ metric: metricData.dataseries }))
 
     this.setTime()
+
+    setTimeout(
+      function () {
+        this.setState({ isLoading: false });
+      }.bind(this),
+      4000
+    );
   }
 
   setTime = () => {
@@ -144,7 +152,7 @@ class App extends Component {
 
   changeDegree = () => {
     let newDegree = !this.state.degreeType
-    this.setState({degreeType: newDegree})
+    this.setState({ degreeType: newDegree })
   }
 
   render() {
@@ -153,25 +161,35 @@ class App extends Component {
         style={{
           backgroundImage: this.state.time === "day" ? `url(${dcday})` : `url(${dcnight})`
         }}>
-        <SevenDayDisplay formatDate={this.formatDate} 
-                         formatWeather={this.formatWeather} 
-                         formatTemp={this.formatTemp} 
-                         british={this.state.british} metric={this.state.metric} 
-                         degreeType={this.state.degreeType} 
-                         time={this.state.time} 
-                         handleModal={this.handleModal}
-                         changeDegree={this.changeDegree}>
-                         </SevenDayDisplay>
-                         
-        <DayDetail formatDate={this.formatDate} 
-                   formatWeather={this.formatWeather} 
-                   formatTemp={this.formatTemp} 
-                   formatWind={this.formatWind} 
-                   day={this.state.detailDay} 
-                   handleModal={this.handleModal} 
-                   showModal={this.state.showModal} 
-                   time={this.state.time}>
-                   </DayDetail>
+          
+        {this.state.isLoading ? (
+          <div className="loading">
+            <img src={loading} alt="loading gif"></img>
+            <h2 className="title">Loading...</h2>
+          </div>
+        ) : (
+          <div>
+            <SevenDayDisplay formatDate={this.formatDate}
+              formatWeather={this.formatWeather}
+              formatTemp={this.formatTemp}
+              british={this.state.british} metric={this.state.metric}
+              degreeType={this.state.degreeType}
+              time={this.state.time}
+              handleModal={this.handleModal}
+              changeDegree={this.changeDegree}>
+            </SevenDayDisplay>
+
+            <DayDetail formatDate={this.formatDate}
+              formatWeather={this.formatWeather}
+              formatTemp={this.formatTemp}
+              formatWind={this.formatWind}
+              day={this.state.detailDay}
+              handleModal={this.handleModal}
+              showModal={this.state.showModal}
+              time={this.state.time}>
+            </DayDetail>
+          </div>
+        )}
       </div>
     )
   }

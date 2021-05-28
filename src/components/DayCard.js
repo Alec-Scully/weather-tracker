@@ -18,11 +18,6 @@ class DayCard extends Component {
 
 export default DayCard;
 
-// ℉℃
-
-// function to convert wind force into appropriate MPH or m/s
-// switch statement
-
 // 0 - Calm - <1 mph, <0.5m/s
 // 1 - Light air - 1-3mph, 0.5-1.5m/s
 // 2 - Light breeze - 4-7mph, 1.6-3.3m/s

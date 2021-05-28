@@ -6,7 +6,7 @@ class SevenDayDisplay extends Component {
     render() {
         return (
             <div className="display">
-                <p>Washington D.C. Seven Day Weather Forecast</p>
+                <p className="title">Washington D.C. Seven Day Weather Forecast</p>
                 <button onClick={() => {this.props.changeDegree()}} disabled={this.props.degreeType}>Fahrenheit</button> <button onClick={() => {this.props.changeDegree()}} disabled={!this.props.degreeType}>Celsius</button>
                 <br></br>
                 {this.props.degreeType ?
