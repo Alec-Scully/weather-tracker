@@ -43,14 +43,14 @@ class App extends Component {
       function () {
         this.setState({ isLoading: false });
       }.bind(this),
-      4000
+      9000
     );
   }
 
   setTime = () => {
     let time = new Date().getHours()
     if (time > 6 && time < 20) {
-      this.setState({ time: "day" })
+      this.setState({ time: "night" })
     } else {
       this.setState({ time: "night" })
     }
