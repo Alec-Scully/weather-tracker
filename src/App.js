@@ -31,26 +31,22 @@ class App extends Component {
     fetch(URL_BRITISH)
       .then(r => r.json())
       .then(britishData =>
-        this.setState({ british: britishData.dataseries }))
+        this.setState({ 
+          british: britishData.dataseries,
+          isLoading: false
+        }))
 
     fetch(URL_METRIC)
       .then(r => r.json())
       .then(metricData => this.setState({ metric: metricData.dataseries }))
 
     this.setTime()
-
-    setTimeout(
-      function () {
-        this.setState({ isLoading: false });
-      }.bind(this),
-      9000
-    );
   }
 
   setTime = () => {
     let time = new Date().getHours()
     if (time > 6 && time < 20) {
-      this.setState({ time: "night" })
+      this.setState({ time: "day" })
     } else {
       this.setState({ time: "night" })
     }
